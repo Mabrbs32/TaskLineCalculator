@@ -23,11 +23,17 @@ public class Calculator {
     }
 
     public static String toSubtract(String stringOne, String stringTwo) {
-        if (stringOne.endsWith(stringTwo)) {
-            int index = stringOne.lastIndexOf(stringTwo);
-            return stringOne.substring(0, index);
-        } else {
+        int index = stringOne.indexOf(stringTwo);
+        String[] array = stringOne.split(stringTwo);
+        StringBuilder builder = new StringBuilder();
+
+        if (index < 0) {
             return stringOne;
+        } else {
+            for (String str : array) {
+                builder.append(str);
+            }
+            return builder.toString();
         }
     }
 
